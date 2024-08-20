@@ -108,5 +108,7 @@ class Memoria extends MemoriaAbs
         $this->MEM[$dir]->link = $nuevo_link;
     }
 
-    public function espacio_libre() {}
+    public function espacio_libre() {
+        return $this->libre;
+    }
 }

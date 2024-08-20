@@ -1,6 +1,11 @@
 <?php
 require_once __DIR__. '/autoload.php';
+$memoria = new Memoria();
+$pila = new Pila($memoria);
 
-$pila = new Pila(new Memoria);
+$pila->meter('a');
+$pila->meter('b');
+$pila->meter('c');
 
-var_dump($pila->vacia());
+$memoria->mostrar();
+
