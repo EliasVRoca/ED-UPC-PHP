@@ -90,6 +90,16 @@ class Memoria extends MemoriaAbs
         }
         return $this->MEM[$z]->dato;
     }
+    public function obtener_link($dir, $lugar)
+    {
+        $z = $dir;
+        $i = 0;
+        while ($i < $lugar - 1) {
+            $z = $this->MEM[$z]->link;
+            $i++;
+        }
+        return $this->MEM[$z]->link;
+    }
     public function espacio_palabra($cadena = '')
     {
         $d = $this->libre;

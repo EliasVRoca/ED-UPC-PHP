@@ -52,7 +52,16 @@ class Cola extends ColaAbs
             return $resultado;
         }
     }
-    public function posponer($dir) {}
+    public function posterior($dir) {
+        if ($this->vacia()) {
+            return -1;
+        }
+        $actual = $this->inicio;
+        while ($actual != $dir) {
+            $actual = $this->m->obtener_link($actual, $this->longitud);
+        }
+        return $this->m->obtener_link($actual, $this->longitud);
+    }
     public function mostar()
     {
         if ($this->vacia()) {

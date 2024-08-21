@@ -19,5 +19,5 @@ abstract class ColaAbs
     public abstract function poner($elemento);
     public abstract function sacar();
     public abstract function mostar();
-    public abstract function posponer($dir);
+    public abstract function posterior($dir);
 }

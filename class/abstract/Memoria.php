@@ -29,8 +29,8 @@ abstract class MemoriaAbs
     public abstract function dir_libre($dir);
     public abstract function poner_dato($dir, $lugar, $valor);
     public abstract function obtener_dato($dir, $lugar);
+    public abstract function obtener_link($dir, $lugar);
     public abstract function espacio_palabra($cadena);
-
     public abstract function modificar_link($dir, $nuevo_link);
     public abstract function espacio_libre();
 }
