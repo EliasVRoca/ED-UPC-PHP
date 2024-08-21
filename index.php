@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/autoload.php';
+require_once __DIR__ . '/helpers.php';
 $memoria = new Memoria();
 $cola = new Cola($memoria);
 
@@ -49,3 +50,4 @@ do {
         echo "\n";
     }
 } while ($teclado != -1);
+exit(limpiarConsola());
