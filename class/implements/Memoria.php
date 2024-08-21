@@ -9,7 +9,7 @@ class Memoria extends MemoriaAbs
 
     public function mostrar()
     {
-        echo "Dir Dato Link \n";
+        echo "Dir     Dato     Link \n";
         echo "*---------------* \n";
 
         foreach ($this->MEM as $actual) {
@@ -88,7 +88,7 @@ class Memoria extends MemoriaAbs
             $z = $this->MEM[$z]->link;
             $i++;
         }
-        return $this->MEM[$z]->link;
+        return $this->MEM[$z]->dato;
     }
     public function espacio_palabra($cadena = '')
     {
