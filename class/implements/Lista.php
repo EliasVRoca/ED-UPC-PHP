@@ -48,16 +48,64 @@ class Lista extends ListaAbs
             $this->m->delete_dir($dir);
         }
     }
-    public function modificarDato($pos, $dato) {}
-    public function vacia() {}
-    public function primero() {}
+    public function modificarDato($pos, $dato)
+    {
+        $this->m->poner_dato($this->primero(), $pos, $dato);
+    }
+    public function vacia()
+    {
+        if ($this->longitud == 0) {
+            return true;
+        }
+        return false;
+    }
+    public function primero()
+    {
+        return $this->inicio;
+    }
     public function segundo() {}
     public function fin()
     {
         return $this->final;
     }
-    public function anterior($dir) {}
-    public function posterior($dir) {}
-    public function mostrar_lista() {}
-    public function duplicado_posterior($dir, $dato) {}
+    public function anterior($dir)
+    {
+        if ($this->vacia()) {
+            return -1;
+        }
+        if ($dir == $this->primero()) {
+            return -1;
+        }
+        $actual = $this->primero();
+        while ($this->m->MEM[$actual]->link != $dir) {
+            $actual = $this->m->MEM[$actual]->link;
+        }
+        return $actual;
+    }
+    public function posterior($dir)
+    {
+        if ($this->vacia()) {
+            return -1;
+        }
+        $actual = $this->primero();
+        while ($actual != $dir) {
+            $actual = $this->m->MEM[$actual]->link;
+        }
+        return $this->m->MEM[$actual]->link;
+    }
+    public function mostrar_lista()
+    {
+        $lista_ordenada = "";
+        $dir = $this->primero();
+        while ($dir != -1) {
+            $lista_ordenada = $lista_ordenada . ", " . $this->m->MEM[$dir]->dato;
+            $dir = $this->m->MEM[$dir]->link;
+        }
+        return $lista_ordenada;
+    }
+    public function duplicado_posterior($dir, $dato)
+    {
+        $this->insertar($dir, $dato);
+        $this->insertar($dir, $dato);
+    }
 }
