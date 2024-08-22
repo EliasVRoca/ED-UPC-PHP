@@ -42,6 +42,7 @@ class Memoria extends MemoriaAbs
     {
         $x = $dir;
         $this->MEM[$x]->link = $this->libre;
+        $this->libre = $dir;
     }
     public function espacio_disponible()
     {
@@ -62,7 +63,7 @@ class Memoria extends MemoriaAbs
     {
         $x = $this->libre;
         $c = false;
-        while ($x != -1 && $c === false) {
+        while ($x != -1 && $c == false) {
             if ($x == $dir) {
                 $c = true;
             }

@@ -20,8 +20,8 @@ class Cola extends ColaAbs
     public function poner($elemento)
     {
         $libre = $this->m->espacio_libre();
-        $this->m->poner_dato($libre, 0, $elemento);
         $this->m->new_espacio(1);
+        $this->m->poner_dato($libre, 0, $elemento);
         if ($this->vacia()) {
             $this->inicio = $libre;
             $this->final = $libre;
@@ -35,32 +35,25 @@ class Cola extends ColaAbs
     public function sacar()
     {
         if ($this->vacia()) {
-            return null;
-        } elseif ($this->longitud == 1) {
-            $resultado = $this->m->obtener_dato($this->inicio, 0);
-            $this->m->delete_dir($this->inicio);
-            $this->inicio = -1;
-            $this->final = -1;
-            $this->longitud = 0;
-            return $resultado;
-        } else {
-            $resultado = $this->m->obtener_dato($this->inicio, 0);
-            $siguiente = $this->m->MEM[$this->inicio]->link;
-            $this->m->delete_dir($this->inicio);
-            $this->inicio = $siguiente;
-            $this->longitud--;
-            return $resultado;
-        }
+            return 'null';
+        } 
+        $borrado = $this->posterior($this->inicio);
+        $dato = $this->m->obtener_dato($this->inicio, 0);
+        $this->m->delete_dir($this->inicio);
+        $this->inicio = $borrado;
+        $this->longitud--;
+        return $dato;
     }
-    public function posterior($dir) {
+    public function posterior($dir)
+    {
         if ($this->vacia()) {
             return -1;
         }
         $actual = $this->inicio;
         while ($actual != $dir) {
-            $actual = $this->m->obtener_link($actual, $this->longitud);
+            $actual = $this->m->MEM[$actual]->link;
         }
-        return $this->m->obtener_link($actual, $this->longitud);
+        return $this->m->MEM[$actual]->link;
     }
     public function mostar()
     {

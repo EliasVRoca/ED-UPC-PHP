@@ -12,7 +12,7 @@ class Pila extends PilaAbs
   public function cima()
   {
     if ($this->vacia()) {
-      return null;
+      return 'null';
     }
     $dato = $this->m->obtener_dato($this->init, $this->length);
     return $dato;
@@ -20,8 +20,8 @@ class Pila extends PilaAbs
   public function meter($elemento)
   {
     $libre = $this->m->espacio_libre();
-    $this->m->poner_dato($this->m->espacio_libre(), 0, $elemento);
     $this->m->new_espacio(1);
+    $this->m->poner_dato($libre, 0, $elemento);
 
     if ($this->vacia()) {
       $this->init = $libre;
@@ -35,7 +35,7 @@ class Pila extends PilaAbs
   }
   public function sacar() {
     if($this->vacia()){
-      return null;
+      return 'null';
     }
     elseif($this->length == 1){
       $dato = $this->m->obtener_dato($this->init, $this->length);
@@ -51,8 +51,8 @@ class Pila extends PilaAbs
       $this->m->modificar_link($this->anterior($this->end), -1);
       $this->m->delete_dir($this->end);
       $this->end = $aux;
+      $this->length--;
       return $dato;
-
     }
   }
   public function mostrar_pila()
@@ -68,14 +68,14 @@ class Pila extends PilaAbs
       $dato = $pilaAux->sacar();
       $this->meter($dato);
     }
-    return rtrim(ltrim($ordenado, ','), ',');
+    return $ordenado;
   }
   public function anterior($dir)
   {
     if ($this->vacia()) {
       return -1;
     }
-    if ($dir) {
+    if ($dir == $this->init) {
       return -1;
     }
     $actual = $this->init;
