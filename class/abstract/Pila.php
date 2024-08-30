@@ -3,7 +3,7 @@ require_once __DIR__ . '/Memoria.php';
 abstract class PilaAbs
 {
     protected $length;
-    protected $init;
+    public $init;
     protected $end;
     protected MemoriaAbs $m;
 
@@ -19,5 +19,7 @@ abstract class PilaAbs
     public abstract function meter($elemento);
     public abstract function sacar();
     public abstract function mostrar_pila();
+    public abstract function mostrar_torre();
     public abstract function anterior($dir);
+
 }

@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../abstract/Lista.php';
 class Lista extends ListaAbs
 {
+   
     public function mostrarLongInifinal()
     {
         echo "Inicio: " . $this->inicio . " \n";

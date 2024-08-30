@@ -2,7 +2,7 @@
 
 abstract class MemoriaAbs
 {
-    protected const MAX = 20;
+    protected const MAX = 30;
     protected const NULO = -1;
 
     public $MEM = [];

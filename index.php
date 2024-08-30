@@ -20,7 +20,7 @@ do {
   if ($teclado == 1) {
     echo "INGRESE LA EDAD DEL PACIENTE\n";
     $dato = fgets(STDIN);
-    $cola->poner($dato);
+    $cola->poner(intval($dato));
   }
   if ($teclado == 2) {
     echo "ATENDIENDO PACIENTE\n";

@@ -33,19 +33,18 @@ class Pila extends PilaAbs
       $this->length++;
     }
   }
-  public function sacar() {
-    if($this->vacia()){
+  public function sacar()
+  {
+    if ($this->vacia()) {
       return 'null';
-    }
-    elseif($this->length == 1){
+    } elseif ($this->length == 1) {
       $dato = $this->m->obtener_dato($this->init, $this->length);
       $this->m->delete_dir($this->end);
       $this->init = -1;
       $this->end = -1;
       $this->length--;
       return $dato;
-    }
-    else{
+    } else {
       $dato = $this->m->obtener_dato($this->init, $this->length);
       $aux = $this->anterior($this->end);
       $this->m->modificar_link($this->anterior($this->end), -1);
@@ -69,6 +68,22 @@ class Pila extends PilaAbs
       $this->meter($dato);
     }
     return $ordenado;
+  }
+  public function mostrar_torre()
+  {
+    $pilaAux = new Pila($this->m);
+    $ordenado = '';
+    echo "------- \n";
+    echo "|     | \n";
+    while (!$this->vacia()) {
+      $dato = $this->sacar();
+      $pilaAux->meter($dato);
+      echo "|  $dato  | \n";
+    }
+    while (!$pilaAux->vacia()) {
+      $dato = $pilaAux->sacar();
+      $this->meter($dato);
+    }
   }
   public function anterior($dir)
   {
